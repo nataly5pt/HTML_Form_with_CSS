@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Form Demo (Styled)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Registration & Preferences</h1>
+    <p class="tag">Every field styled. No defaults left behind.</p>
+  </header>
+
+  <main class="container">
+    <!-- method=GET so results.html can read query parameters -->
+    <form action="results.html" method="get" class="card">
+
+      <fieldset>
+        <legend>Basic Info</legend>
+
+        <label for="fullName">Full name</label>
+        <input id="fullName" name="fullName" type="text" placeholder="Jane Doe" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="••••••••" />
+
+        <label for="tel">Phone</label>
+        <input id="tel" name="tel" type="tel" placeholder="+1 (555) 123-4567" />
+
+        <label for="url">Website / Portfolio</label>
+        <input id="url" name="url" type="url" placeholder="https://example.com" />
+
+        <label for="search">Search term</label>
+        <input id="search" name="search" type="search" placeholder="Type to search…" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Numbers & Dates</legend>
+
+        <label for="age">Age</label>
+        <input id="age" name="age" type="number" min="0" max="120" step="1" placeholder="30" />
+
+        <label for="satisfaction">Satisfaction (0–100)</label>
+        <div class="range-wrap">
+          <input id="satisfaction" name="satisfaction" type="range" min="0" max="100" value="50" />
+          <output id="satisfactionOut">50</output>
+        </div>
+
+        <label for="date">Date</label>
+        <input id="date" name="date" type="date" />
+
+        <label for="time">Time</label>
+        <input id="time" name="time" type="time" />
+
+        <label for="datetime">Date & Time</label>
+        <input id="datetime" name="datetime" type="datetime-local" />
+
+        <label for="month">Month</label>
+        <input id="month" name="month" type="month" />
+
+        <label for="week">Week</label>
+        <input id="week" name="week" type="week" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Choices</legend>
+
+        <label for="color">Favorite color</label>
+        <div class="color-row">
+          <input id="color" name="color" type="color" value="#3b82f6" />
+          <span id="colorSwatch">#3b82f6</span>
+        </div>
+
+        <label for="role">Role (single select)</label>
+        <select id="role" name="role">
+          <option value="">— choose one —</option>
+          <option>Student</option>
+          <option>Designer</option>
+          <option>Developer</option>
+          <option>Manager</option>
+        </select>
+
+        <label for="skills">Skills (multi-select)</label>
+        <select id="skills" name="skills" multiple size="4">
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="js">JavaScript</option>
+          <option value="ui">UI/UX</option>
+        </select>
+
+        <fieldset class="inline">
+          <legend>Contact preference (radio)</legend>
+          <label><input type="radio" name="contactPref" value="email" checked /> Email</label>
+          <label><input type="radio" name="contactPref" value="phone" /> Phone</label>
+          <label><input type="radio" name="contactPref" value="sms" /> SMS</label>
+        </fieldset>
+
+        <fieldset class="inline">
+          <legend>Interests (checkbox)</legend>
+          <label><input type="checkbox" name="interests" value="coding" /> Coding</label>
+          <label><input type="checkbox" name="interests" value="design" /> Design</label>
+          <label><input type="checkbox" name="interests" value="writing" /> Writing</label>
+          <label><input type="checkbox" name="interests" value="gaming" /> Gaming</label>
+        </fieldset>
+      </fieldset>
+
+      <fieldset>
+        <legend>Extras</legend>
+
+        <label for="bio">Short bio</label>
+        <textarea id="bio" name="bio" rows="4" placeholder="Tell us a little about yourself…"></textarea>
+
+        <label for="file">Upload a file</label>
+        <input id="file" name="file" type="file" />
+
+        <!-- demo hidden field -->
+        <input type="hidden" name="formVersion" value="v1" />
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit">Submit</button>
+        <button type="reset" class="secondary">Reset</button>
+      </div>
+    </form>
+
+    <p class="note">This is a simple demo: results are displayed on <code>results.html</code> using the query string.</p>
+  </main>
+
+  <footer class="site-footer">
+    <a href="index.htm" class="muted">Open the index.htm version</a>
+  </footer>
+</body>
+</html>
