@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Form Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .results-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    table{ width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td{ border-bottom: 1px solid rgba(255,255,255,.08); padding: 10px; text-align: left; }
+    th{ color: var(--muted); font-weight: 600; }
+    .back{ margin-top: 16px; display: inline-block; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Form Results</h1>
+    <p class="tag">Quick & “barbaric” display using the query string.</p>
+  </header>
+
+  <main class="container">
+    <div class="results-card">
+      <table id="resultsTable">
+        <thead><tr><th>Field</th><th>Value</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <a href="index.html" class="back">← Back to form</a>
+    </div>
+  </main>
+
+  <script>
+    // Parse query string & display all fields
+    const params = new URLSearchParams(window.location.search);
+    const tbody = document.querySelector('#resultsTable tbody');
+
+    if ([...params].length === 0) {
+      tbody.innerHTML = '<tr><td colspan="2">No data submitted. Go back and fill the form.</td></tr>';
+    } else {
+      // Collect multiple values (e.g., checkboxes, multiple selects)
+      const map = {};
+      for (const [key, val] of params.entries()) {
+        if (!map[key]) map[key] = [];
+        map[key].push(val);
+      }
+      Object.entries(map).forEach(([k, arr]) => {
+        const tr = document.createElement('tr');
+        const tdK = document.createElement('td');
+        const tdV = document.createElement('td');
+        tdK.textContent = k;
+        tdV.textContent = arr.join(', ');
+        tr.append(tdK, tdV);
+        tbody.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html>
